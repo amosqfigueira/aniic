@@ -239,3 +239,41 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #faf9f9; color: #
   width: 18px;   /* ícone Google */
   height: 18px;
 }
+
+.trabalhos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.trabalho-item {
+  display: flex;
+  justify-content: space-between; /* título à esquerda, data à direita */
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fafafa;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.trabalho-item:hover {
+  background-color: #f0f0f0;
+}
+
+.trabalho-titulo {
+  font-weight: 600;
+  color: #0077cc;
+  text-decoration: none;
+}
+
+.trabalho-titulo:hover {
+  text-decoration: underline;
+}
+
+.trabalho-data {
+  font-size: 0.9rem;
+  color: #666;
+  margin-left: 8px;
+}

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function Perfil() {
     const navigate = useNavigate();
       const [user, setUser] = useState();
+      const [trabalhos, setTrabalhos] = useState([]);
    const userData = JSON.parse(localStorage.getItem("aniicuserdta"));
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -47,14 +48,48 @@ const API_URL = import.meta.env.VITE_API_URL;
     
     }
   }
+
+    const carregartrabalhos = async (userid) => {
+   try {
+   const response = await fetch(
+      `${API_URL}/ANNIC/TU/byPseudonimo/?pseudonimo=${userid}`,
+      {
+        method: "GET",
+      }
+    );
+
+
+
+      if (response.ok) {
+        const data = await response.json();
+console.log(data)
+          if (Array.isArray(data) && data.length > 0) {
+        setTrabalhos(data);
+      }
+
+    
+      else if (data && Object.keys(data).length > 0) {
+        setTrabalhos(data);
+      }
+       
+       
+      }
+    } catch (error) {
+      console.error("Erro na requisição:", error);
+    
+    }
+  }
   useEffect(() => {
     if (!userData || Object.keys(userData).length === 0) {
       // Se não existir sessão, redireciona para login
       navigate("/login");
     }else{
+      
+      //userData.pseudonimo
       carregardadosdoutilizador(userData.id);
+      carregartrabalhos(userData.pseudonimo);
     }
-  }, [userData, navigate]);
+  }, [ navigate]);
 
   if (!userData) {
   
@@ -136,8 +171,27 @@ className="user-photo-large"
             </div>
           </div>
           <div className="content-area card">
-            <h3>Conteúdos e Imagens</h3>
-            <p>Aqui vão os trabalhos ou posts do artista.</p>
+            <h3>Meus Trabalhos</h3>
+{
+  (trabalhos && trabalhos.length > 0) ? (
+    <div className="trabalhos-lista">
+      {trabalhos.map((item, index) => (
+        <div key={index} className="trabalho-item">
+          <a href={item.Midia} className="trabalho-titulo">
+            {item.Designacao}
+          </a>
+          <span>
+            Publicado em: <span className="trabalho-data">{item.data_registo}</span>
+          </span>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <p>Os trabalhos do artista e posts aparecerão aqui.</p>
+  )
+}
+
+           
           </div>
         </main>
       </div>
