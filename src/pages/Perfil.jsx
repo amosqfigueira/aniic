@@ -137,7 +137,7 @@ className="user-photo-large"
           </div>
           <div className="content-area card">
             <h3>Conteúdos e Imagens</h3>
-            <p>Aqui vão os trabalhos ou posts do utilizador.</p>
+            <p>Aqui vão os trabalhos ou posts do artista.</p>
           </div>
         </main>
       </div>
