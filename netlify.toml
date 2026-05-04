@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/ANNIC/*"
+  to = "http://102.216.253.12:7000/ANNIC/:splat"
+  status = 200
+  force = true
