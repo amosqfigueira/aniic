@@ -4,9 +4,10 @@
 
 [[redirects]]
   from = "/ANNIC/*"
-  to = "http://102.216.253.12:7000/ANNIC/:splat"
+  to = "http://102.216.253.12:7000/:splat"
   status = 200
   force = true
+
 
 [[redirects]]
   from = "/*"
