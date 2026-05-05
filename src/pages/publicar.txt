@@ -1,0 +1,8 @@
+
+npm run build
+
+git add .
+
+git commit -m "adicionado trabalhos"
+
+git push

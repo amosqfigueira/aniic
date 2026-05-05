@@ -85,9 +85,10 @@ console.log(data)
       navigate("/login");
     }else{
       
+      console.log(userData)
       //userData.pseudonimo
-      carregardadosdoutilizador(userData.id);
-      carregartrabalhos(userData.pseudonimo);
+      carregardadosdoutilizador(userData.id.trim());
+      carregartrabalhos(userData.pseudonimo.trim());
     }
   }, [ navigate]);
 
